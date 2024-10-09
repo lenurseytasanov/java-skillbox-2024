@@ -1,0 +1,10 @@
+spring:
+    application:
+        name: skillbox-laba2
+    shell:
+        interactive:
+            enabled: true
+
+app:
+    load-users:
+        enabled: ${load-users:true}

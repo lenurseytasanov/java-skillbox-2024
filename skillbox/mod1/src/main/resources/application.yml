@@ -1,0 +1,10 @@
+spring:
+    profiles:
+        active: init
+    application:
+        name: skillbox-laba1
+
+
+app:
+    datasource: contacts.txt
+    init-data: default-contacts.txt
