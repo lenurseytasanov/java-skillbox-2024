@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+    contact-web-app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: contact-web-app:latest
+        container_name: contact-web-app
+        depends_on:
+            postgres:
+                condition: service_healthy
+        ports:
+            - 8080:8080
+        networks:
+            - app-network
+    postgres:
+        image: postgres:16.2-alpine
+        container_name: postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: contact_db
+        healthcheck:
+            test: pg_isready -d contact_db -U postgres
+            interval: 10s
+            timeout: 5s
+            retries: 3
+            start_period: 5s
+        ports:
+            - 5432:5432
+        networks:
+            - app-network
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+volumes:
+    postgres_data:
+        name: postgres_data
+        driver: local
+
+networks:
+    app-network:
+        name: app-network
+        driver: bridge

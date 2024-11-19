@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Форма контакта</title>
+</head>
+    <body>
+        <h1 th:text="${contact.id == null ? 'Создать контакт' : 'Редактировать контакт'}"></h1>
+        <form th:action="@{/contacts}" th:object="${contact}" method="post">
+            <input type="hidden" th:if="${contact.id != null}" th:field="*{id}" />
+            <label for="firstName">Имя:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" />
+            <br />
+            <label for="lastName">Фамилия:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" />
+            <br />
+            <label for="email">Почта:</label>
+            <input type="text" id="email" th:field="*{email}" />
+            <br />
+            <label for="phone">Номер телефона:</label>
+            <input type="text" id="phone" th:field="*{phone}" />
+            <br />
+            <button type="submit">Отправить</button>
+        </form>
+    </body>
+</html>
