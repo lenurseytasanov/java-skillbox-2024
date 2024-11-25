@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: skillbox-laba5
+    cache:
+        type: redis
+        host: cache
+        port: 6379
+        redis:
+            time-to-live: 60000
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://postgres:5432/books_db
+        username: postgres
+        password: postgres
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: update
+    output:
+        ansi:
+            enabled: always
