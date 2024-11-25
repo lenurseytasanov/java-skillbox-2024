@@ -1,0 +1,12 @@
+spring:
+    application:
+        name: skillbox-laba4
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/news_db
+        username: postgres
+        password: postgres
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: update
